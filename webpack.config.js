@@ -8,6 +8,7 @@ var BUILD_PATH= path.resolve(ROOT_PATH,'build')
 
 var entryName = 'app.jsx'
 var fileName = 'bundle.js'
+
 module.exports = {
     entry:{
         app: path.resolve(APP_PATH,entryName)
@@ -27,12 +28,12 @@ module.exports = {
 
     module:{
         rules:[
-            {
-                test:/\.jsx?$/,
-                loaders:'eslint-loader',
-                enforce:'pre',
-                include:APP_PATH
-            },
+            // {
+            //     test:/\.jsx?$/,
+            //     loaders:'eslint-loader',
+            //     enforce:'pre',
+            //     include:APP_PATH
+            // },
             {
                 test:/\.jsx?$/,
                 loaders:'babel-loader',
@@ -41,7 +42,9 @@ module.exports = {
         ]   
     },
     plugins:[
-        new htmlWebpackPlugin({title:'my first react applicaiton'})
+        new htmlWebpackPlugin({
+            filename:'index.html'
+        })
     ],
     resolve:{
         extensions:['.js','.jsx']
